@@ -1,29 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { FormBuilder, Validators } from '@angular/forms';
+import { ValidationService } from '../../services/validation.service';
+import { User } from '../../providers/user';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  form;
+  loginForm;
 
-  constructor(public navCtrl: NavController) {
-    this.form = new FormGroup({
-      email: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({
+      'email': ['', [Validators.required, ValidationService.emailValidator]],
+      'password': ['', [Validators.required]],
     });
   }
 
-  ionViewDidLoad() {
-    console.log('Hello Login Page');
-  }
-
   doLogin(event) {
-   event.preventDefault();
-      console.log(this.form);
+    event.preventDefault();
+    if(this.loginForm._status === 'VALID') {
+      console.log(User.login());
     }
+  }
 }
 
 

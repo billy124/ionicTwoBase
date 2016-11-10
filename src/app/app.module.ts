@@ -4,6 +4,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
+// services
+import { ValidationService } from '../services/validation.service'; 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -19,6 +22,6 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     LoginPage
   ],
-  providers: []
+  providers: [ValidationService]
 })
 export class AppModule {}

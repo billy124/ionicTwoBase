@@ -1,26 +1,27 @@
 <ion-header>
-	<ion-navbar>
-		<ion-title>Login</ion-title>
-	</ion-navbar>
+    <ion-navbar>
+        <ion-title>Login</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-	<form (submit)="doLogin($event)" [formGroup]="form">
-		<ion-list inset>
-			<ion-item>
-				<ion-label>Username</ion-label>
-				<ion-input formControlName="email" type="text" value=""></ion-input>
-			</ion-item>
+    <form (submit)="doLogin($event)" [formGroup]="loginForm">
+        <ion-list inset>
+            <ion-item>
+                <ion-label>Username</ion-label>
+                <ion-input formControlName="email" type="text" value=""></ion-input>
+            </ion-item>
+            <small [hidden]="loginForm.controls.email.valid || loginForm.controls.email.pristine">A valid email is required.</small>
 
-			<ion-item>
-				<ion-label>Password</ion-label>
-				<ion-input formControlName="password" type="password" value=""></ion-input>
-			</ion-item>
-		</ion-list>
+            <ion-item>
+                <ion-label>Password</ion-label>
+                <ion-input formControlName="password" type="password" value=""></ion-input>
+            </ion-item>
+            <small [hidden]="loginForm.controls.password.valid || loginForm.controls.password.pristine">A valid password is required.</small>			
+        </ion-list>
 
-		<div padding>
-			
-      <button ion-button block type="submit">Login</button>
-		</div>
-	</form>
+        <div padding>
+            <button ion-button block type="submit">Login</button>
+        </div>
+    </form>
 </ion-content>

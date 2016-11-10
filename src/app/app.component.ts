@@ -11,7 +11,7 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
   // we can change the hopepage here
-  rootPage = LoginPage;
+  rootPage = LoginPage; 
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
